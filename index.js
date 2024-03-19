@@ -2,11 +2,15 @@ const connectToMongoose=require('./db')
 const express = require('express');
 const app = express()
 var cors = require('cors')
+require('dotenv').config();
 
 
  
 app.use(cors())
-const port = 4000
+// console.log(process.env);
+// const port = 5000
+const port = process.env.port || 5000; // Change 3000 to a port number that is not in use
+
 
 connectToMongoose();
 
@@ -21,5 +25,5 @@ app.use('/api/email',require('./routes/email'))
 
 
 app.listen(port, () => {
-  console.log(`NoteHub backend listening at port http://localhost:${port}`)
+  console.log(`Backend is listening at port ${process.env.REDIRECT_URL}`)
 })

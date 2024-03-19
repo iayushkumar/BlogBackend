@@ -1,6 +1,10 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const jwt_secret='iamayush'
+// const jwt_secret='iamayush'
+
+require('dotenv').config();
+
+const jwt_secret=process.env.jwt_secret;
 
 const fetchuser = (req, res, next) => {
     const token = req.header('auth-token');

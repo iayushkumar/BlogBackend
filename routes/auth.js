@@ -4,8 +4,15 @@ var router = express.Router()
 const user = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const jwt_secret = 'iamayush'
+
+
 const fetchuser = require('../middleware/middleware')
+
+
+
+require('dotenv').config();
+// const jwt_secret = 'iamayush'
+const jwt_secret = process.env.jwt_secret
 
 router.post('/createuser', [
   body('email', 'wrong email').isEmail(),
